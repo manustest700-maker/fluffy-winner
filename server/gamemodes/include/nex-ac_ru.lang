@@ -1,0 +1,24 @@
+//For Nex-AC v1.0 (0.3.7-R1)
+
+#if defined _nex_ac_lang_included
+	#endinput
+#endif
+#define _nex_ac_lang_included
+
+new
+	SUSPICION_1[] =			"[Nex-AC] رًàلàٍûâàيèه يà %d ID. تîن ïًè÷èيû: %03d%s",
+	SUSPICION_2[] =			"[Nex-AC] رًàلàٍûâàيèه يà IP %s. تîن ïًè÷èيû: %03d%s",
+	VERSION_WARNING[] =		"[Nex-AC] ؤàييàے âهًٌèے àيٍè÷èٍà يه ïîنُîنèٍ نëے âهًٌèè ٌهًâهًà",
+	CFG_OPENING_ERROR[] =	"[Nex-AC] خّèلêà ٌîçنàيèے/îٍêًûٍèے %s!",
+
+#if defined DEBUG
+	DEBUG_CODE_1[] =		"[Nex-AC debug] ID %d ïًهâûٌèë %d ïîïûٍîê ôëَنà. Public ID: %d",
+	DEBUG_CODE_2[] =		"[Nex-AC debug] حهâهًيàے âهًٌèے َ %d ID. آهًٌèے: %s",
+	DEBUG_CODE_3[] =		"[Nex-AC debug] ID %d ïًهâûٌèë %d ïîنêë‏÷هيèé ٌ 1 IP-àنًهٌà",
+	DEBUG_CODE_4[] =		"[Nex-AC debug] حهَنà÷يûé âُîن â RCON ٌ IP %s èٌïîëüçَے ïàًîëü %s",
+	DEBUG_CODE_5[] =		"[Nex-AC debug] ID %d èٌïîëüçîâàë NOP %s",
+#endif
+
+	KICK_MSG[] =			"آû لûëè êèêيٍَû ïî ïîنîçًهيè‏ â èٌïîëüçîâàيèè ÷èٍ-ïًîمًàىى (#%03d)",
+	MAX_CONNECTS_MSG[] =	"آû ïًهâûٌèëè ىàêٌèىàëüيîه ÷èٌëî ïîنêë‏÷هيèé ٌ 1 IP-àنًهٌà",
+	UNKNOWN_CLIENT_MSG[] =	"ؤàييàے âهًٌèے êëèهيٍà يه ïîنُîنèٍ نëے èمًû يà ٌهًâهًه";

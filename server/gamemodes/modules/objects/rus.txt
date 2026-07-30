@@ -1,0 +1,16 @@
+D:\samp projects\FURY RP\gamemodes\modules\objects\mappings.pwn(30869) : ошибка 010: неверная функция или объявление
+D:\samp projects\FURY RP\gamemodes\modules\objects\mappings.pwn(2) : ошибка 010: неверная функция или объявление
+D:\samp projects\FURY RP\gamemodes\modules\objects\mappings.pwn(3) : ошибка 021: идентификатор "CreateDynamicObject" уже объявлен
+D:\samp projects\FURY RP\gamemodes\modules\objects\mappings.pwn(3) : ошибка 010: неверная функция или объявление
+D:\samp projects\FURY RP\gamemodes\modules\objects\mappings.pwn(6) : ошибка 010: неверная функция или объявление
+D:\samp projects\FURY RP\gamemodes\modules\objects\mappings.pwn(8) : ошибка 010: неверная функция или объявление
+D:\samp projects\FURY RP\gamemodes\modules\objects\mappings.pwn(8) : ошибка 021: идентификатор "CreateDynamicObject" уже объявлен
+D:\samp projects\FURY RP\gamemodes\modules\objects\mappings.pwn(8) : ошибка 010: неверная функция или объявление
+D:\samp projects\FURY RP\gamemodes\modules\objects\mappings.pwn(8) : фатальная ошибка 107: слишком много ошибок на одной строке
+
+Компиляция остановлена.
+
+Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
+
+
+Ошибок:9.
