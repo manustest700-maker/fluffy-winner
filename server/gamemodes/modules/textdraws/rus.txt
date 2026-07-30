@@ -1,0 +1,26 @@
+D:\samp projects\ARAB RP\gamemodes\modules\textdraws\m_td.pwn(2) : ошибка 010: неверная функция или объявление
+D:\samp projects\ARAB RP\gamemodes\modules\textdraws\m_td.pwn(4) : ошибка 070: поддержка рациональных чисел не включена
+D:\samp projects\ARAB RP\gamemodes\modules\textdraws\m_td.pwn(5) : ошибка 010: неверная функция или объявление
+D:\samp projects\ARAB RP\gamemodes\modules\textdraws\m_td.pwn(6) : ошибка 010: неверная функция или объявление
+D:\samp projects\ARAB RP\gamemodes\modules\textdraws\m_td.pwn(6) : ошибка 010: неверная функция или объявление
+D:\samp projects\ARAB RP\gamemodes\modules\textdraws\m_td.pwn(8) : ошибка 010: неверная функция или объявление
+D:\samp projects\ARAB RP\gamemodes\modules\textdraws\m_td.pwn(9) : ошибка 010: неверная функция или объявление
+D:\samp projects\ARAB RP\gamemodes\modules\textdraws\m_td.pwn(10) : ошибка 010: неверная функция или объявление
+D:\samp projects\ARAB RP\gamemodes\modules\textdraws\m_td.pwn(11) : ошибка 010: неверная функция или объявление
+D:\samp projects\ARAB RP\gamemodes\modules\textdraws\m_td.pwn(12) : ошибка 010: неверная функция или объявление
+D:\samp projects\ARAB RP\gamemodes\modules\textdraws\m_td.pwn(13) : ошибка 010: неверная функция или объявление
+D:\samp projects\ARAB RP\gamemodes\modules\textdraws\m_td.pwn(14) : ошибка 070: поддержка рациональных чисел не включена
+D:\samp projects\ARAB RP\gamemodes\modules\textdraws\m_td.pwn(16) : ошибка 010: неверная функция или объявление
+D:\samp projects\ARAB RP\gamemodes\modules\textdraws\m_td.pwn(18) : ошибка 025: заголовок функции отличается от прототипа
+D:\samp projects\ARAB RP\gamemodes\modules\textdraws\m_td.pwn(19) : ошибка 025: заголовок функции отличается от прототипа
+D:\samp projects\ARAB RP\gamemodes\modules\textdraws\m_td.pwn(20) : ошибка 025: заголовок функции отличается от прототипа
+D:\samp projects\ARAB RP\gamemodes\modules\textdraws\m_td.pwn(20) : ошибка 021: идентификатор "TextDrawColor" уже объявлен
+D:\samp projects\ARAB RP\gamemodes\modules\textdraws\m_td.pwn(20) : ошибка 010: неверная функция или объявление
+D:\samp projects\ARAB RP\gamemodes\modules\textdraws\m_td.pwn(20) : фатальная ошибка 107: слишком много ошибок на одной строке
+
+Компиляция остановлена.
+
+Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
+
+
+Ошибок:19.

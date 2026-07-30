@@ -1,0 +1,5 @@
+# Keep SA-MP/Pawn files as CP1256 in the working tree while storing readable
+# UTF-8 blobs in Git. Git verifies this encoding is round-trip safe on add.
+server/gamemodes/**/*.pwn working-tree-encoding=CP1256 eol=lf
+server/gamemodes/**/*.inc working-tree-encoding=CP1256 eol=lf
+server/gamemodes/**/*.lang working-tree-encoding=CP1256 eol=lf

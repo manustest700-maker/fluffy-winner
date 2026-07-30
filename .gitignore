@@ -1,0 +1,11 @@
+# Generated SA-MP binaries can embed deployment configuration.
+server/gamemodes/*.amx
+
+# Never commit live server configuration or backup files.
+server/server.cfg
+server/**/*.bak*
+
+# Local build output.
+*.log
+*.lst
+*.asm
