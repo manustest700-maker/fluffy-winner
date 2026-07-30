@@ -13852,7 +13852,7 @@ callback:s_timer( )
 		{
 		    if(IsPlayerConnected(ad_info [ d ] [ ad_id ]) && strlen ( ad_info [ d ] [ ad_text ] ) > 3 )
 		    {
-				new scm_string [ 256 ] ;
+				new scm_string [ MAX_T_MESSAGE ] ;
 				g_ad_count ++ ;
 				if ( ad_info [ d ] [ ad_phone_number ] != 0 )
 					format ( scm_string, sizeof scm_string, "إعلان: %s (%s) [%d] %d #%d", ad_info [ d ] [ ad_text ], ad_info [ d ] [ ad_sender ], ad_info [ d ] [ ad_id ], ad_info [ d ] [ ad_phone_number ], g_ad_count ) ;
@@ -28351,7 +28351,10 @@ Advertise_Send ( playerid, const ad_text [ ] )
 	give_money ( playerid, - ad_price ) ;
 	ad_cooldown = gettime ( ) + 60 ;
 	g_ad_count ++ ;
-	new scm_string [ 256 ] ;
+	// SA-MP 0.3.7 chat packets are limited to 144 characters. Keeping the
+	// formatted advert inside that limit prevents the native from dropping a
+	// long Arabic advert instead of showing its text.
+	new scm_string [ MAX_T_MESSAGE ] ;
 	if ( p_info [ playerid ] [ number ] != 0 )
 		format ( scm_string, sizeof scm_string, "إعلان: %s (%s) [%d] %d #%d", ad_text, p_info [ playerid ] [ name ], playerid, p_info [ playerid ] [ number ], g_ad_count ) ;
 	else
@@ -28360,6 +28363,29 @@ Advertise_Send ( playerid, const ad_text [ ] )
 	{
 		SendClientMessage ( i, 0x33D65CFF, scm_string ) ;
 	}
+	return 1 ;
+}
+
+stock Advertise_Submit ( playerid, const raw_text [ ] )
+{
+	if ( ad_cooldown >= gettime ( ) )
+		return SendClientMessage ( playerid, col_gray,"{"#cRD"}* {"#cGR"}لا يمكنك ترسل إعلان أكثر من مرة بالدقيقة." ) ;
+
+	// Normalize once at the shared submission boundary so both /ad and the
+	// compatibility dialog always broadcast the same CP1256 text.
+	new advert_text [ 128 ] ;
+	Utf8ToCp1256 ( advert_text, raw_text, sizeof ( advert_text ) ) ;
+
+	new advert_length = strlen ( advert_text ) ;
+	if ( advert_length < 3 )
+		return SendClientMessage ( playerid, col_gray,"{"#cRD"}* {"#cGR"}نص الإعلان قصير جداً." ) ;
+	if ( advert_length > 100 )
+		return SendClientMessage ( playerid, col_gray,"{"#cRD"}* {"#cGR"}النص طويل جداً (الحد 100 حرف)." ) ;
+	if ( check_advertise ( playerid, advert_text ) == 2 ) return 1 ;
+	if ( p_info [ playerid ] [ money ] < ad_price )
+		return SendClientMessage ( playerid, col_gray, "ما لديك ما يكفي من المال." ) ;
+
+	return Advertise_Send ( playerid, advert_text ) ;
 }
 
 stock is_ip_found(string[])
@@ -42048,21 +42074,8 @@ CMD:edit ( playerid )
 
 CMD:advertise ( playerid, params[])
 {
-
-	if ( ad_cooldown >= gettime ( ) ) return SendClientMessage ( playerid, col_gray,"{"#cRD"}* {"#cGR"}لا يمكنك ترسل إعلان أكثر من مرة بالدقيقة." ) ;
 	if ( ! isnull ( params ) )
-	{
-		// Mobile clients type Arabic as UTF-8; transcode to CP1256 so the
-		// length check, profanity filter and broadcast all see real chars.
-		new __adcp [ 220 ] ;
-		Utf8ToCp1256 ( __adcp, params, sizeof ( __adcp ) ) ;
-		if ( strlen ( __adcp ) < 3 ) return SendClientMessage ( playerid, col_gray,"{"#cRD"}* {"#cGR"}نص الإعلان قصير جداً." ) ;
-		if ( strlen ( __adcp ) > 100 ) return SendClientMessage ( playerid, col_gray,"{"#cRD"}* {"#cGR"}النص طويل جداً (الحد 100 حرف)." ) ;
-		if ( check_advertise ( playerid, __adcp ) == 2 ) return 1 ;
-		if ( p_info [ playerid ] [ money ] < ad_price ) return SendClientMessage ( playerid, col_gray, "ما لديك ما يكفي من المال." ) ;
-		Advertise_Send ( playerid, __adcp ) ;
-		return 1 ;
-	}
+		return Advertise_Submit ( playerid, params ) ;
 	// NOTE: GTA:SA dialog input boxes cannot accept Arabic characters, so the
 	// advertise text MUST be typed directly in chat: /ad [النص].
 	SendClientMessage ( playerid, col_gray, "{"#cRD"}* {"#cGR"}الاستخدام: {"#cWH"}/ad [نص الإعلان]" ) ;
@@ -59561,8 +59574,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			GetPVarString ( playerid, "advert_text", ad_inputtext, 100 ) ;
 			DeletePVar ( playerid, "advert_text" ) ;
 			if ( strlen ( ad_inputtext ) < 3 ) return SendClientMessage ( playerid, col_gray, "{"#cRD"}* {"#cGR"}نص الإعلان قصير جداً." ) ;
-			Advertise_Send ( playerid, ad_inputtext ) ;
-			return 1 ;
+			return Advertise_Submit ( playerid, ad_inputtext ) ;
 		}
 		case d_interview:
 		{
