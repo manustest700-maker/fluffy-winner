@@ -13854,10 +13854,12 @@ callback:s_timer( )
 		    {
 				new scm_string [ MAX_T_MESSAGE ] ;
 				g_ad_count ++ ;
+				// Keep the player text at the end. Affected mobile clients lose RTL
+				// text when Latin names or numbers follow it in the same chat line.
 				if ( ad_info [ d ] [ ad_phone_number ] != 0 )
-					format ( scm_string, sizeof scm_string, "إعلان: %s (%s) [%d] %d #%d", ad_info [ d ] [ ad_text ], ad_info [ d ] [ ad_sender ], ad_info [ d ] [ ad_id ], ad_info [ d ] [ ad_phone_number ], g_ad_count ) ;
+					format ( scm_string, sizeof scm_string, "[AD] %s [%d] %d #%d: %s", ad_info [ d ] [ ad_sender ], ad_info [ d ] [ ad_id ], ad_info [ d ] [ ad_phone_number ], g_ad_count, ad_info [ d ] [ ad_text ] ) ;
 				else
-					format ( scm_string, sizeof scm_string, "إعلان: %s (%s) [%d] #%d", ad_info [ d ] [ ad_text ], ad_info [ d ] [ ad_sender ], ad_info [ d ] [ ad_id ], g_ad_count ) ;
+					format ( scm_string, sizeof scm_string, "[AD] %s [%d] #%d: %s", ad_info [ d ] [ ad_sender ], ad_info [ d ] [ ad_id ], g_ad_count, ad_info [ d ] [ ad_text ] ) ;
 				foreach(new i: logged_players)
 				{
 					SendClientMessage ( i, 0x33D65CFF, scm_string ) ;
@@ -28355,10 +28357,12 @@ Advertise_Send ( playerid, const ad_text [ ] )
 	// formatted advert inside that limit prevents the native from dropping a
 	// long Arabic advert instead of showing its text.
 	new scm_string [ MAX_T_MESSAGE ] ;
+	// Keep an ASCII-only prefix and put Arabic at the end of the line. This
+	// matches the working report/radio paths and avoids the mobile bidi bug.
 	if ( p_info [ playerid ] [ number ] != 0 )
-		format ( scm_string, sizeof scm_string, "إعلان: %s (%s) [%d] %d #%d", ad_text, p_info [ playerid ] [ name ], playerid, p_info [ playerid ] [ number ], g_ad_count ) ;
+		format ( scm_string, sizeof scm_string, "[AD] %s [%d] %d #%d: %s", p_info [ playerid ] [ name ], playerid, p_info [ playerid ] [ number ], g_ad_count, ad_text ) ;
 	else
-		format ( scm_string, sizeof scm_string, "إعلان: %s (%s) [%d] #%d", ad_text, p_info [ playerid ] [ name ], playerid, g_ad_count ) ;
+		format ( scm_string, sizeof scm_string, "[AD] %s [%d] #%d: %s", p_info [ playerid ] [ name ], playerid, g_ad_count, ad_text ) ;
 	foreach(new i: logged_players)
 	{
 		SendClientMessage ( i, 0x33D65CFF, scm_string ) ;

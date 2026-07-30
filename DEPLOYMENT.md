@@ -5,12 +5,18 @@ was not restarted.
 
 | Remote file | Size | SHA-256 |
 | --- | ---: | --- |
-| `/gamemodes/arabonline.pwn` | 6,183,345 | `242f0200df54d049d0ae3be26b348025c664a9536313cdccb1e9df449ee32300` |
-| `/gamemodes/arabonline.amx` | 30,943,130 | `41131bc6a2958c44dd196510b1d6a3ef170ff6fee8cf4bdad3f405ba7dc4e2de` |
+| `/gamemodes/arabonline.pwn` | 6,183,628 | `a7abf08382b73f51d91afa4e34db4fa145b7e48cc2138ac206b223aad93847b7` |
+| `/gamemodes/arabonline.amx` | 30,943,114 | `149190f37f047440e6a8dcbc2c628dc4fcf0f6ddb6b39f48bdad94f582bcd921` |
 | `/pawncc/pawncc` | 17,568 | `f263cfb8dea572839ca6e6441bb90149e787f0f6b45c6e19160c27d070f93d17` |
 | `/pawncc/libpawnc.so` | 923,880 | `a21c80a0f16c403b674d42adb346b1ad9576313035344abded388b2df480c9b2` |
 
-Backups created before the Arabic advert upload:
+Backups created before placing Arabic advert text last to avoid the mobile
+client's bidi rendering bug:
+
+- `/gamemodes/arabonline.pwn.bak-before-ad-bidi-20260730-164222`
+- `/gamemodes/arabonline.amx.bak-before-ad-bidi-20260730-164222`
+
+Earlier backups created before the CP1256 advert upload:
 
 - `/gamemodes/arabonline.pwn.bak-before-ad-cp1256-20260730-093306`
 - `/gamemodes/arabonline.amx.bak-before-ad-cp1256-20260730-093306`
